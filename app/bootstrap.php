@@ -4,3 +4,4 @@
  * system components, and then runs your application. The component uses MVC 
  * application architecture.
  */
+echo 'boostrap';
