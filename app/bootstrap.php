@@ -4,6 +4,9 @@
  * system components, and then runs your application. The component uses MVC 
  * application architecture.
  */
-require_once '../app/libraries/Controller.php';
-require_once '../app/libraries/Core.php';
-require_once '../app/libraries/Database.php';
+require_once '../app/libraries/controller.php';
+require_once '../app/libraries/core.php';
+require_once '../app/libraries/database.php';
+
+//Init Core Library
+$init = new Core();
