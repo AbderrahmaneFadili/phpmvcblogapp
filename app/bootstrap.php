@@ -4,4 +4,6 @@
  * system components, and then runs your application. The component uses MVC 
  * application architecture.
  */
-echo 'boostrap';
+require_once '../app/libraries/Controller.php';
+require_once '../app/libraries/Core.php';
+require_once '../app/libraries/Database.php';
