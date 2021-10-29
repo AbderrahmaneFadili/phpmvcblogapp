@@ -5,6 +5,7 @@
  * Creates URL & loads Core Controller
  * URL Format : Controller/method/param
  */
+
 class Core
 {
     protected $currentController = 'Pages';
