@@ -47,6 +47,7 @@ class Core
         $this->params = $url ? array_values($url) : [];
 
         //call a callback with array of params
+        //Ex Users::index($id)
         call_user_func_array([$this->currentController, $this->currentMethod], $this->params);
     }
 
