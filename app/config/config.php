@@ -16,3 +16,6 @@ define('URLROOT', 'http://localhost/phpmvcblogapp/');
 
 //SITE NAME
 define('SITENAME', 'PHP MVC Blog App');
+
+//APP VERSION
+define('APPVERSION', '1.0.0');
