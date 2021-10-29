@@ -11,7 +11,7 @@ class Pages extends Controller
     public function index()
     {
         $data = [
-            'title' => 'Welcome Home'
+            'title' => 'Home'
         ];
         $this->view('pages/index', $data);
     }
@@ -19,7 +19,7 @@ class Pages extends Controller
     public function about()
     {
         $data = [
-            'title' => 'Welcome About'
+            'title' => 'About us'
         ];
         $this->view('pages/about', $data);
     }
