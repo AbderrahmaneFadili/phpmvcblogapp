@@ -15,6 +15,7 @@ class Users extends Controller
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             /////Process form/////
 
+
             //Sanitize POST data
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
@@ -41,10 +42,8 @@ class Users extends Controller
                 $data['email_err'] = "Please enter email";
             } else if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
                 $data['email_err'] = "Email format is invalid ex : user@email.com";
-            } else {
-                if ($this->userModel->findUserByEmail($data['email'])) {
-                    $data['email_err'] = "Email is already taken.";
-                }
+            } else if ($this->userModel->findUserByEmail($data['email'])) {
+                $data['email_err'] = "Email is already taken.";
             }
 
             //Validate password
@@ -63,13 +62,25 @@ class Users extends Controller
 
             //Make sure errors are empty
             if (empty($data['name_err']) && empty($data['email_err']) && empty($data['password_err']) && empty($data['confirm_password_err'])) {
-                die('success');
+                //if data is Validated
+
+                //password_hash
+                $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+
+                //Register user
+                if ($this->userModel->create($data)) {
+                    //Redirect to users/login
+                    redirect('users/login');
+                } else {
+                    die('Something wrong');
+                }
             } else {
                 //load view
                 $this->view('users/register', $data);
             }
         } else {
             //Init Data
+            echo 'location : ' . URLROOT . 'users/login';
             $data = [
                 'name' => '',
                 'email' => '',
