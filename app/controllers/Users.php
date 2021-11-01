@@ -69,6 +69,8 @@ class Users extends Controller
 
                 //Register user
                 if ($this->userModel->create($data)) {
+                    //using the flash message function
+                    flash('register_success', 'You are registerd and can log in');
                     //Redirect to users/login
                     redirect('users/login');
                 } else {
@@ -80,7 +82,7 @@ class Users extends Controller
             }
         } else {
             //Init Data
-            echo 'location : ' . URLROOT . 'users/login';
+
             $data = [
                 'name' => '',
                 'email' => '',
