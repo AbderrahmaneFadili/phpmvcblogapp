@@ -25,6 +25,7 @@ class Post
         return $results;
     }
 
+    //add post
     public function addPost($data)
     {
         try {
@@ -43,6 +44,22 @@ class Post
             }
         } catch (PDOException $pdoe) {
             echo $pdoe->getMessage();
+        }
+    }
+
+    //get post by Id
+    public function getPostById($id)
+    {
+        try {
+            $this->db->query('SELECT * FROM posts WHERE id = :id');
+
+            $this->db->bind(':id', $id);
+
+            $post = $this->db->single();
+
+            return $post;
+        } catch (PDOException $pdoe) {
+            echo  $pdoe->getMessage();
         }
     }
 }

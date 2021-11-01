@@ -170,6 +170,7 @@ class Users extends Controller
         }
     }
 
+    //create user session
     public function createUserSession($user)
     {
         $_SESSION['user_id'] = $user->id;
