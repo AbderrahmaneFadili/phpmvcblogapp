@@ -8,6 +8,10 @@ class Pages extends Controller
 
     public function index()
     {
+        if (isLoggedIn()) {
+            redirect('posts/index');
+        }
+
         $data = [
             'title' => 'Blog App',
             "description" => "Simple Blog App using PHP MVC Framework"
