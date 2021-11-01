@@ -5,6 +5,9 @@ class Users extends Controller
 
     public function __construct()
     {
+        if (isLoggedIn()) {
+            redirect('pages/index');
+        }
         $this->userModel = $this->model('User');
     }
 
@@ -183,14 +186,5 @@ class Users extends Controller
         unset($_SESSION['user_email']);
         session_destroy();
         redirect('users/login');
-    }
-
-    public function isLoggedIn()
-    {
-        if (isset($_SESSION['user_id'])) {
-            return true;
-        } else {
-            return false;
-        }
     }
 }
