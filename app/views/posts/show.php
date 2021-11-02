@@ -1,5 +1,6 @@
 <!-- Header -->
 <?php require APPROOT . "/views/inc/header.php"; ?>
+
 <!-- Main Content -->
 <div class="container mt-3">
     <a href='<?php echo URLROOT; ?>posts/' class='btn btn-light'><i class="fas fa-chevron-left"></i> Back</a>

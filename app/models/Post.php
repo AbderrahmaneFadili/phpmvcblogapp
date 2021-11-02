@@ -28,22 +28,19 @@ class Post
     //add post
     public function addPost($data)
     {
-        try {
 
-            $this->db->query('INSERT INTO posts (title,user_id,body) VALUES  (:title,:user_id,:body);');
 
-            $this->db->bind(":title", $data['title']);
-            $this->db->bind(":user_id", $data['user_id']);
-            $this->db->bind(":body", $data['body']);
+        $this->db->query('INSERT INTO posts (title,user_id,body) VALUES  (:title,:user_id,:body);');
 
-            //Execute
-            if ($this->db->execute()) {
-                return true;
-            } else {
-                return false;
-            }
-        } catch (PDOException $pdoe) {
-            echo $pdoe->getMessage();
+        $this->db->bind(":title", $data['title']);
+        $this->db->bind(":user_id", $data['user_id']);
+        $this->db->bind(":body", $data['body']);
+
+        //Execute
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
         }
     }
 
@@ -60,6 +57,26 @@ class Post
             return $post;
         } catch (PDOException $pdoe) {
             echo  $pdoe->getMessage();
+        }
+    }
+
+    //update post 
+    public function updatePost($data)
+    {
+        try {
+            $this->db->query('UPDATE posts SET title = :title , body = :body WHERE id = :id;');
+
+            $this->db->bind(":title", $data['title']);
+            $this->db->bind(":id", $data['id']);
+            $this->db->bind(":body", $data['body']);
+
+            if ($this->db->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (PDOException $pdoe) {
+            echo $pdoe->getMessage();
         }
     }
 }
