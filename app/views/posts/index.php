@@ -19,7 +19,7 @@
         <div class="card card-body mb-3">
             <h4 class="card-title"><?php echo $post->title; ?></h4>
             <div class="bg-light p-2 mb-3">
-                Written by <?php echo $post->name; ?>
+                Written by <strong><?php echo $post->name; ?></strong>
                 on <?php echo $post->postCreated; ?>
             </div>
             <p class="card-text">
