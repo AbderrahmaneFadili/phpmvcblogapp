@@ -28,19 +28,21 @@ class Post
     //add post
     public function addPost($data)
     {
+        try {
+            $this->db->query('INSERT INTO posts (title,user_id,body) VALUES  (:title,:user_id,:body);');
 
+            $this->db->bind(":title", $data['title']);
+            $this->db->bind(":user_id", $data['user_id']);
+            $this->db->bind(":body", $data['body']);
 
-        $this->db->query('INSERT INTO posts (title,user_id,body) VALUES  (:title,:user_id,:body);');
-
-        $this->db->bind(":title", $data['title']);
-        $this->db->bind(":user_id", $data['user_id']);
-        $this->db->bind(":body", $data['body']);
-
-        //Execute
-        if ($this->db->execute()) {
-            return true;
-        } else {
-            return false;
+            //Execute
+            if ($this->db->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (PDOException $pdoe) {
+            echo $pdoe->getMessage();
         }
     }
 
@@ -77,6 +79,21 @@ class Post
             }
         } catch (PDOException $pdoe) {
             echo $pdoe->getMessage();
+        }
+    }
+
+    //delete post
+    public function deletePost($id)
+    {
+
+        $this->db->query("DELETE FROM  posts WHERE id = :id;");
+
+        $this->db->bind(':id', $id);
+
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
         }
     }
 }

@@ -22,7 +22,7 @@
                         <label for="body">Body <sup>*</sup></label>
                         <textarea id='body' name="body" class="form-control form-control-lg <?php echo !empty($data['body_err']) ? "is-invalid" : "" ?>">
                         <?php echo $data["body"] ?>
-                    </textarea>
+                        </textarea>
                         <span class='invalid-feedback'><?php echo $data["body_err"] ?></span>
                     </div>
 
